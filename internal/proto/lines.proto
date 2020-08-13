@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "/internal/grpcserver";
+
+service Lines{
+    rpc SubscribeOnSportsLines (stream LinesRequest) returns (stream LinesResponse){}
+}
+
+message LinesRequest{
+    repeated string line = 1;
+    int32 frequency = 2;
+}
+
+message LinesResponse{
+    repeated LineDelta resp = 1;
+}
+
+message LineDelta{
+    string line = 1;
+    double delta = 2; 
+}
