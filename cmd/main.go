@@ -99,7 +99,7 @@ func updateStorageWithLine(lineFromHandle *model.LineFromHandle, request *http.R
 	return nil
 }
 
-//запускает gRPC сервер
+//runGrpcServer запускает gRPC сервер
 func runGrpcServer(port string) error {
 	for {
 		if model.ResponsesFromLinesCounter == model.LinesAmount {
