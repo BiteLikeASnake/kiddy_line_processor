@@ -23,8 +23,6 @@ var client = &http.Client{
 }
 
 var envs model.Envs
-var parser = flags.NewParser(&envs, flags.Default)
-var err error
 
 const (
 	timeFootbalSec = 1
@@ -32,6 +30,8 @@ const (
 
 func main() {
 	//Устанавливаем значения переменных окружения
+	var err error
+	parser := flags.NewParser(&envs, flags.Default)
 	if _, err := parser.Parse(); err != nil {
 		log.Fatal(err.Error())
 	}

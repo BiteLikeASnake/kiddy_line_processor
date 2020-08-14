@@ -24,13 +24,7 @@ type Lines struct {
 	LineLatestValue  float64 `gorm:"column:line_latest_value"`
 }
 
-//LinesMap ...
-var LinesMap = map[string]bool{
-	"football": true,
-	"soccer":   true,
-	"baseball": true,
-}
-
+//ConvertToLineSetCurrent ...
 func (val LineFromHandle) ConvertToLineSetCurrent() (*LineSetCurrent, error) {
 	if len(val.Lines) != 1 {
 		return nil, fmt.Errorf("ConvertToLineSetCurrent: Входной параметр %+v имеет неверный формат.\n", val)
@@ -47,6 +41,8 @@ func (val LineFromHandle) ConvertToLineSetCurrent() (*LineSetCurrent, error) {
 	return res, nil
 }
 
+//TODO config, 2ступенчатое получение данных
+//Envs ...
 type Envs struct {
 	HttpPort        string `long:"http" env:"HTTP_PORT" description:"Http port" default:":8081"`
 	GrpcPort        string `long:"grpc" env:"GRPC_PORT" description:"grpc port" default:":9000"`

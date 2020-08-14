@@ -15,14 +15,14 @@ const sleepDuration = 5
 //storage ...
 type storage struct {
 	database *gorm.DB
-	Adress   string
+	Address  string
 }
 
 //New возвращает объект интерфейса IStorage (storage)
 func New(adress string) (model.IStorage, error) {
 	var err error
 	db := &storage{}
-	db.Adress = adress
+	db.Address = adress
 	db.database, err = gorm.Open("postgres", adress)
 	if err != nil {
 		return nil, fmt.Errorf("db.New: %v", err)
@@ -62,7 +62,7 @@ func (db *storage) checkConnection() {
 			if err != nil {
 
 				log.Printf("db.checkConnection: no connection: %s", err.Error())
-				tempDb, err := gorm.Open("postgres", db.Adress)
+				tempDb, err := gorm.Open("postgres", db.Address)
 
 				if err != nil {
 					log.Printf("db.checkConnection: could not establish connection: %v", err)
