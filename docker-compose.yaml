@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+
+version: '3.5'
+
+volumes:
+  data:
+
+
+
+services:
+
+ adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8084:8080
+
+ db:
+    image: postgr_storage_img
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: lines_storage
+      POSTGRES_USER: postgres
