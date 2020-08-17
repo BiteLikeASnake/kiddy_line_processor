@@ -11,7 +11,6 @@ import (
 	"github.com/BiteLikeASnake/kiddy_line_processor/internal/model"
 	"github.com/BiteLikeASnake/kiddy_line_processor/internal/server"
 	"github.com/BiteLikeASnake/kiddy_line_processor/internal/storage"
-	"github.com/jessevdk/go-flags"
 	"github.com/labstack/gommon/log"
 )
 
@@ -22,44 +21,47 @@ var client = &http.Client{
 	Timeout: time.Second * 10,
 }
 
-var envs model.Envs
+var config *model.Config = &model.Config{}
 
 const (
 	timeFootbalSec = 1
 )
 
 func main() {
+	log.Print("Started")
 	//Устанавливаем значения переменных окружения
-	var err error
-	parser := flags.NewParser(&envs, flags.Default)
-	if _, err := parser.Parse(); err != nil {
+	err := config.GetConfig()
+	if err != nil {
 		log.Fatal(err.Error())
 	}
 	//Открываем http соединение
-	server := server.New(envs.HttpPort)
+	server := server.New(config.HttpPort)
 	server.Start()
 
 	//Подключаем базу данных
-	model.Storage, err = storage.New(envs.StorageConn)
+	model.Storage, err = storage.New(config.StorageConn)
 	if err != nil {
-		log.Fatal(err.Error)
+		log.Fatal(err.Error())
 	}
 	//Запускаем функции обращения к ручкам сервиса lines_provider
-	go autoCall(envs.SInterval, "soccer")
-	go autoCall(envs.BInterval, "baseball")
-	go autoCall(envs.FInterval, "football")
+	go autoCall(config.SInterval, "soccer")
+	go autoCall(config.BInterval, "baseball")
+	go autoCall(config.FInterval, "football")
 	//Открываем gRPC соединение
-	runGrpcServer(envs.GrpcPort)
+	err = runGrpcServer(config.GrpcPort)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
 }
 
 //autoCall обращается к lines_provider, сохраняет полученное значение в хранилище, ждет необходимое время.
 func autoCall(delay int, suffix string) {
 	firstTimeCalled := true
 
-	finalAddress := fmt.Sprintf(envs.ProviderAddress + "/" + suffix)
+	finalAddress := fmt.Sprintf(config.ProviderAddress + "/" + suffix)
 	request, err := http.NewRequest("GET", finalAddress, nil)
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Print(err.Error())
 	}
 	linesFromHandle := &model.LineFromHandle{}
 	for {

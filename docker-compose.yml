@@ -1,0 +1,46 @@
+# Use root/example as user/password credentials
+
+version: '3.5'
+
+volumes:
+  data:
+
+
+
+services:
+
+ adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8084:8080
+
+ db:
+    image: postgr_storage_img
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: lines_storage
+      POSTGRES_USER: postgres
+
+
+ line_processor:
+    image: line_processor_img
+    restart: always
+    ports:
+      - 8081:8081
+      - 9000:9000
+    environment:
+      HTTP_PORT: :8081
+      GRPC_PORT: :9000
+      STORAGE: "user=postgres password=example dbname=lines_storage sslmode=disable port=5432 host=db"
+      PROVIDER_ADDRESS: http://localhost:8000/api/v1/lines
+      FOOTBALL_INTERVAL: 5
+      SOCCER_INTERVAL: 10
+      BASEBALL_INTERVAL: 2
+    depends_on:
+      - db
+    command: /bin/sh -c "dockerize -wait tcp://db:5432 -timeout 30s && /app"
+
