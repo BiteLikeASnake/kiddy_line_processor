@@ -8,7 +8,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//Connector ...
+//Connector - содержит роутер и адрес вызываемого сервиса
 type Connector struct {
 	router *mux.Router
 	addr   string
@@ -23,7 +23,7 @@ func New(addr string) *Connector {
 }
 
 func (c *Connector) executeHandlers() {
-	c.router.HandleFunc("/alive", aliveHandler).Methods("GET")
+	c.router.HandleFunc("/ready", aliveHandler).Methods("GET")
 }
 
 //Start запуск http сервера

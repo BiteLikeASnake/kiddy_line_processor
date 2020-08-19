@@ -1,12 +1,12 @@
 package model
 
-//Storage ...
+//Storage - переменная хранилища
 var Storage IStorage
 
-//ResponsesFromLinesCounter ...
+//ResponsesFromLinesCounter - счетчик линий lines_provider, по которым поступают ответы.
 var ResponsesFromLinesCounter int = 0
 
-//LinesAmount ...
+//LinesAmount - количество линий lines_provider, к которым поступают запросы.
 const LinesAmount = 3
 
 /*

@@ -49,9 +49,9 @@ type envs struct {
 	GrpcPort        string `long:"grpc" env:"GRPC_PORT" description:"grpc port" default:":9000"`
 	StorageConn     string `long:"stconn" env:"STORAGE" description:"Connection string to storage database" default:"user=postgres password=example dbname=lines_storage sslmode=disable port=5432 host=localhost"`
 	ProviderAddress string `long:"provider" env:"PROVIDER_ADDRESS" description:"lines provider http address" default:"http://localhost:8000/api/v1/lines"`
-	FInterval       int    `long:"fi" env:"FOOTBALL_INTERVAL" description:"time interval in seconds for football handle" default:"10"`
-	SInterval       int    `long:"si" env:"SOCCER_INTERVAL" description:"time interval in seconds for soccer handle" default:"10"`
-	BInterval       int    `long:"bi" env:"BASEBALL_INTERVAL" description:"time interval in seconds for baseball handle" default:"10"`
+	FInterval       string `long:"fi" env:"FOOTBALL_INTERVAL" description:"time interval in seconds for football handle" default:"10"`
+	SInterval       string `long:"si" env:"SOCCER_INTERVAL" description:"time interval in seconds for soccer handle" default:"10"`
+	BInterval       string `long:"bi" env:"BASEBALL_INTERVAL" description:"time interval in seconds for baseball handle" default:"10"`
 }
 
 //Config - публичная структура, хранит проверенные переменные окружения
@@ -76,17 +76,32 @@ func (c *Config) GetConfig() error {
 	c.GrpcPort = e.GrpcPort
 	c.StorageConn = e.StorageConn
 	c.ProviderAddress = e.ProviderAddress
-	if e.FInterval <= 0 {
+
+	val, err := strconv.Atoi(e.FInterval)
+	if err != nil {
+		return fmt.Errorf("GetConfig: %v", err)
+	}
+	if val <= 0 {
 		return fmt.Errorf("GetConfig: Получено значение FInterval <=0")
 	}
-	c.FInterval = e.FInterval
-	if e.SInterval <= 0 {
+	c.FInterval = val
+
+	val, err = strconv.Atoi(e.SInterval)
+	if err != nil {
+		return fmt.Errorf("GetConfig: %v", err)
+	}
+	if val <= 0 {
 		return fmt.Errorf("GetConfig: Получено значение SInterval <=0")
 	}
-	c.SInterval = e.SInterval
-	if e.BInterval <= 0 {
+	c.SInterval = val
+
+	val, err = strconv.Atoi(e.BInterval)
+	if err != nil {
+		return fmt.Errorf("GetConfig: %v", err)
+	}
+	if val <= 0 {
 		return fmt.Errorf("GetConfig: Получено значение BInterval <=0")
 	}
-	c.BInterval = e.BInterval
+	c.BInterval = val
 	return nil
 }

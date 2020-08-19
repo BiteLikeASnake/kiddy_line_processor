@@ -8,7 +8,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8084:8080
+      - 8080:8080
 
  db:
     image: postgr_storage_img

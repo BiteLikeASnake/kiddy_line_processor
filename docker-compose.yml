@@ -42,9 +42,9 @@ services:
       GRPC_PORT: :9000
       STORAGE: "user=postgres password=example dbname=lines_storage sslmode=disable port=5432 host=db"
       PROVIDER_ADDRESS: http://line_provider:8000/api/v1/lines
-      FOOTBALL_INTERVAL: 5
-      SOCCER_INTERVAL: 10
-      BASEBALL_INTERVAL: 2
+      FOOTBALL_INTERVAL: "5"
+      SOCCER_INTERVAL: "10"
+      BASEBALL_INTERVAL: "2"
     depends_on:
       - db
       - line_provider
