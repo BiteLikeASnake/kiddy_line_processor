@@ -34,7 +34,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Print("Successful")
 	//Открываем http соединение
 	server := server.New(config.HttpPort)
 	server.Start()

@@ -1,0 +1,18 @@
+stages:
+    - lint
+    - test
+    - build
+
+lint:
+    stage: lint
+    script:
+     - go get -u golang.org/x/lint/golint
+     - golint cmd internal
+test:
+    stage: test
+    script:
+     - go test ./... -v
+build:
+    stage: build
+    script:
+      - go build cmd/main.go
