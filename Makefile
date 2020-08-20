@@ -1,3 +1,5 @@
+all: tests
+
 storage_img:
 	cd docker_storage
 	docker build -t postgr_storage_img docker_storage
@@ -18,3 +20,5 @@ run: storage_img line_processor_img
 
 stop:
 	docker-compose down
+
+#all: tests

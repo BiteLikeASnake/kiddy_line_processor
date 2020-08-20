@@ -12,8 +12,8 @@ import (
 
 type grpcServer struct{}
 
-//Реализует метод SubscribeOnSportsLines интерфейса LinesServer
-func (s *grpcServer) SubscribeOnSportsLines(stream Lines_SubscribeOnSportsLinesServer) error {
+//SubscribeOnSportsLines - Реализует метод SubscribeOnSportsLines интерфейса LinesServer
+func (s grpcServer) SubscribeOnSportsLines(stream Lines_SubscribeOnSportsLinesServer) error {
 	ctx := stream.Context()
 	//
 	funcFirstTimeInvoked := true //маркер первого запуска метода

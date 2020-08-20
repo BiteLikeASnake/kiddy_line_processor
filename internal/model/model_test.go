@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+//TestConvertToLineSetCurrent - проверяет работу ConvertToLineSetCurrent
 func TestConvertToLineSetCurrent(t *testing.T) {
 	var demoLineFromHandle = LineFromHandle{map[string]string{"FOOTBALL": "123"}}
 	var incorrectLineFromHandle = LineFromHandle{map[string]string{"FOOTBALL": "123", "BASEBALL": "456"}}

@@ -14,7 +14,7 @@ type Connector struct {
 	addr   string
 }
 
-//Конструктор *Connector
+//New - Конструктор *Connector
 func New(addr string) *Connector {
 	c := &Connector{}
 	c.router = mux.NewRouter()
@@ -23,7 +23,7 @@ func New(addr string) *Connector {
 }
 
 func (c *Connector) executeHandlers() {
-	c.router.HandleFunc("/ready", aliveHandler).Methods("GET")
+	c.router.HandleFunc("/ready", readyHandler).Methods("GET")
 }
 
 //Start запуск http сервера
@@ -32,8 +32,8 @@ func (c *Connector) Start() {
 	go http.ListenAndServe(c.addr, c.router)
 }
 
-//aliveHandler проверяет что пришли ответы от сервиса по всем линиям
-func aliveHandler(w http.ResponseWriter, r *http.Request) {
+//readyHandler проверяет что пришли ответы от сервиса по всем линиям
+func readyHandler(w http.ResponseWriter, r *http.Request) {
 	if model.ResponsesFromLinesCounter < model.LinesAmount {
 		http.Error(w, fmt.Sprintf("Got responses from %d of %d lines", model.ResponsesFromLinesCounter, model.LinesAmount), http.StatusInternalServerError)
 		return

@@ -10,6 +10,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
+//sleepDuration - время пинга функции checkConnection в секундах
 const sleepDuration = 5
 
 //storage ...

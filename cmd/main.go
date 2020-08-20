@@ -14,18 +14,11 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
-//var provider_address = "http://localhost:8000/api/v1/lines"
-//var storage_address = "user=postgres password=example dbname=lines_storage sslmode=disable port=5432 host=localhost"
-
 var client = &http.Client{
 	Timeout: time.Second * 10,
 }
 
 var config *model.Config = &model.Config{}
-
-const (
-	timeFootbalSec = 1
-)
 
 func main() {
 	log.Print("Started")
