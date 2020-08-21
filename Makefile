@@ -1,9 +1,7 @@
 all: tests
 
 storage_img:
-	cd docker_storage
 	docker build -t postgr_storage_img docker_storage
-	cd ..
 
 line_processor_img:
 	docker build -t line_processor_img .
