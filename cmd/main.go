@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/grpcserver"
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/model"
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/server"
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/storage"
+	"github.com/call-me-snake/kiddy_line_processor/internal/grpcserver"
+	"github.com/call-me-snake/kiddy_line_processor/internal/model"
+	"github.com/call-me-snake/kiddy_line_processor/internal/server"
+	"github.com/call-me-snake/kiddy_line_processor/internal/storage"
 	"github.com/labstack/gommon/log"
 )
 

@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/model"
+	"github.com/call-me-snake/kiddy_line_processor/internal/model"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -24,12 +24,12 @@
   version = "v1.4.2"
 
 [[projects]]
-  digest = "1:25ebe6496abb289ef977c081b2d49f56dd97c32db4ca083d37f95923909ced02"
+  digest = "1:6078383dbb7405bfa3ce16957f37564e3b716afa29b6eb45ffdb6674624d1e0d"
   name = "github.com/gorilla/mux"
   packages = ["."]
   pruneopts = "UT"
-  revision = "75dcda0896e109a2a22c9315bca3bb21b87b2ba5"
-  version = "v1.7.4"
+  revision = "98cb6bf42e086f6af920b965c38cacc07402d51b"
+  version = "v1.8.0"
 
 [[projects]]
   digest = "1:a2cff208d4759f6ba1b1cd228587b0a1869f95f22542ec9cd17fff64430113c7"
@@ -132,7 +132,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:bd0b162831e9b17ed1e5dc2ee121f939df7797160505103ea0e5c35ca2362543"
+  digest = "1:2c6f0bac9c19172b9ab8fb2da4c8d6d3856b55198e6ba63098c628ed206ceaf3"
   name = "golang.org/x/net"
   packages = [
     "http/httpguts",
@@ -143,18 +143,18 @@
     "trace",
   ]
   pruneopts = "UT"
-  revision = "3edf25e44fccea9e11b919341e952fca722ef460"
+  revision = "c89045814202410a2d67ec20ecf177ec77ceae7f"
 
 [[projects]]
   branch = "master"
-  digest = "1:686b37c42aff10005e53921cac78ed57e4ce538cd2cd0998433d0bb4b3bd18ce"
+  digest = "1:273d3fc83b06be03a7543a1e15bcba1a74ad82ffefc0b015305a1dd5b30a9c39"
   name = "golang.org/x/sys"
   packages = [
     "internal/unsafeheader",
     "unix",
   ]
   pruneopts = "UT"
-  revision = "d785dc25833f1ad82a72435f1e369f016e16ee2c"
+  revision = "157a740278f41cac851f88b8aebe047c6fc2414f"
 
 [[projects]]
   digest = "1:fa940333c48808b0d86ef21f412ffcfd0e5084a82f13905c028a404803b1908f"
@@ -183,14 +183,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:61acf1a73c474a424301a4012b7166be337af81a14540f4b58f6ad6304af1f49"
+  digest = "1:860f2d6aa643f7baca771169f1d513e3eabe87c5f9830e8917fa345f217d0766"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
   pruneopts = "UT"
-  revision = "f69a88009b70a94c67e3910bf1663f5df9fbfc6d"
+  revision = "2bf3329a0021d3fd5f1508cab78b6c1306830ad5"
 
 [[projects]]
-  digest = "1:74ce37cd0ceb9eebf9882bc8be1ee07bb6464006a5a1b386de0e26e50dedb0cc"
+  digest = "1:a78dd0bc72e72dcb8275f39d3cc9c3b4ff82c801dc39e27773b285a6b043ddd7"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -236,8 +236,8 @@
     "tap",
   ]
   pruneopts = "UT"
-  revision = "bde0263672f027525e2950992a4c7db7af572b59"
-  version = "v1.31.0"
+  revision = "39ef2aaf62df775b9c54a59957d113a0495cae73"
+  version = "v1.31.1"
 
 [[projects]]
   digest = "1:fd328c5b52e433ea3ffc891bcc4f94469a82bf478558208db2b386aad8a304a1"

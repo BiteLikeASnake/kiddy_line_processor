@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/model"
+	"github.com/call-me-snake/kiddy_line_processor/internal/model"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )

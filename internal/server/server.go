@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/BiteLikeASnake/kiddy_line_processor/internal/model"
+	"github.com/call-me-snake/kiddy_line_processor/internal/model"
 	"github.com/gorilla/mux"
 )
 
