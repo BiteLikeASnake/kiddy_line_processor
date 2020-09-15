@@ -1,5 +1,5 @@
 FROM golang:1.12.0-alpine3.9 AS builder
-WORKDIR /go/src/github.com/BiteLikeASnake/kiddy_line_processor
+WORKDIR /go/src/github.com/call-me-snake/kiddy_line_processor
 COPY . .
 RUN go install ./...
 
